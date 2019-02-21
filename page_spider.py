@@ -12,7 +12,7 @@ def main(database: str, url_list_file: str):
     urls = url_utilities.load_urls_from_file(url_list_file)
 
     for url in urls:
-        print("reading "+url)
+        print("reading " + url)
         page_content = url_utilities.load_page(url=url)
         words = url_utilities.scrape_page(page_contents=page_content)
         big_word_list.extend(words)
@@ -22,10 +22,6 @@ def main(database: str, url_list_file: str):
     filename = 'docfile.docx'
     text_data = read_word.getText(filename)
     print(text_data)
-
-
-
-
 
 
 if __name__ == "__main__":
