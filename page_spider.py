@@ -2,7 +2,7 @@ import os
 import argparse
 from utilities import read_word
 
-from utilities import url_utilities
+from utilities import url_utilities, database_utilities
 
 
 def main(database: str, url_list_file: str):
@@ -18,6 +18,14 @@ def main(database: str, url_list_file: str):
         big_word_list.extend(words)
 
     print(len(big_word_list))
+
+    # database code
+    os.chdir(os.path.dirname(__file__))
+    # make sure the db file is in the same directory of the .py file
+    path = os.path.join(os.getcwd(),"words.db")
+    database_utilities.create_database(database_path=path)
+    database_utilities.save_words_to_database(database_path=path, word_list=big_word_list)
+
 
     filename = 'docfile.docx'
     text_data = read_word.getText(filename)
